@@ -1,0 +1,41 @@
+<html>
+<title>part search result</title>
+<head>
+
+<style>
+body{
+padding:50px;
+}
+#parts{
+width:400px;
+margin-left:20%;
+}
+</style>
+</head>
+<body>
+<div id ="parts"></div>
+<script type="text/javascript" >
+var pathPrefix = "../";
+var divParts= document.getElementById("parts")
+	   divParts.style.visibility = "hidden"
+var arrayForFinalDivs = JSON.parse(window.name).divs;
+var word = JSON.parse(window.name).word;
+localStorage.setItem("word",word)
+for(var i=0; i<arrayForFinalDivs.length;i++){
+	divParts.innerHTML +=  arrayForFinalDivs[i]+"</br></br></br></br>"
+}
+
+var imgTag = document.getElementsByTagName("img")
+var aTag = document.getElementsByTagName("a")
+for(var j =0;j<imgTag.length;j++){
+	var srcLink = pathPrefix+imgTag[j].getAttribute("src");
+	imgTag[j].setAttribute("src",srcLink )
+}
+for(var k =0;k<aTag.length;k++){
+	var hrefLink = pathPrefix+aTag[k].getAttribute("href");
+	aTag[k].setAttribute("href",hrefLink )
+}
+setTimeout(function(){divParts.style.visibility = "visible"},10);
+</script>
+</body>
+</html>
